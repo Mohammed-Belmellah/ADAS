@@ -5,7 +5,9 @@ import com.example.ADAS_App.service.ISessionService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 @RestController
@@ -26,5 +28,16 @@ public class SessionController {
     @GetMapping("/driver/{driverId}")
     public ResponseEntity<List<SessionDTO>> getSessionsByDriver(@PathVariable UUID driverId) {
         return ResponseEntity.ok(sessionService.getSessionsByDriver(driverId));
+    }
+    @PutMapping("/{id}/end")
+    public SessionDTO endSession(
+            @PathVariable UUID id,
+            @RequestBody(required = false) Map<String, Object> body // optionnel si tu veux customiser le endTime
+    ) {
+        LocalDateTime endTime = null;
+        if (body != null && body.containsKey("endTime")) {
+            endTime = LocalDateTime.parse(body.get("endTime").toString());
+        }
+        return sessionService.endSession(id, endTime);
     }
 }

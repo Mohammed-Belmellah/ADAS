@@ -1,5 +1,6 @@
 package com.example.ADAS_App.service;
 
+import com.example.ADAS_App.DTOs.EmotionRecordBatchDTO;
 import com.example.ADAS_App.DTOs.EmotionRecordDTO;
 import com.example.ADAS_App.Mappers.EmotionRecordMapper;
 import com.example.ADAS_App.entity.EmotionRecord;
@@ -55,5 +56,21 @@ public class EmotionRecordServiceImpl implements IEmotionRecordService {
     public void deleteEmotionRecord(UUID id) {
         EmotionRecord emotionRecord = emotionRecordRepo.findById(id).orElseThrow(() -> new RuntimeException("emotion not found"));
         emotionRecordRepo.delete(emotionRecord);
+    }
+
+    @Override
+    public List<EmotionRecordDTO> saveBatch(EmotionRecordBatchDTO batchDTO) {
+        Session session = sessionRepo.findById(batchDTO.getSessionId())
+                .orElseThrow(() -> new RuntimeException("Session not found"));
+
+        List<EmotionRecord> records = batchDTO.getRecords().stream()
+                .map(dto -> EmotionRecordMapper.toEntity(dto, session))
+                .toList();
+
+        emotionRecordRepo.saveAll(records);
+
+        return records.stream()
+                .map(EmotionRecordMapper::toDTO)
+                .toList();
     }
 }

@@ -8,7 +8,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;
-
+import java.util.List;
+import java.util.UUID;
+/*
 @Component
 public class TestDataLoader implements CommandLineRunner {
 
@@ -40,7 +42,7 @@ public class TestDataLoader implements CommandLineRunner {
         sessionRepo.deleteAll();           // depends on users
         emergencyContactRepo.deleteAll();  // depends on individual drivers
 
-        companyDriverRepo.deleteAll();     // depends on companies and users
+           // depends on companies and users
         individualDriverRepo.deleteAll();  // depends on users
         adminRepo.deleteAll();             // depends on companies and users
 
@@ -69,15 +71,7 @@ public class TestDataLoader implements CommandLineRunner {
         adminRepo.save(admin);
 
         // Create a Company Driver
-        CompanyDriver driver1 = new CompanyDriver();
-        driver1.setName("John Doe");
-        driver1.setEmail("johndoe@fastlogistics.com");
-        driver1.setPassword(encoder.encode("driver123"));
-        driver1.setRole(Role.DRIVER_COMPANY);
-        driver1.setLicenseNumber("DL-123456");
-        driver1.setVehicleId("V-001");
-        driver1.setCompany(company);
-        companyDriverRepo.save(driver1);
+
 
         // Create an Individual Driver
         IndividualDriver driver2 = new IndividualDriver();
@@ -88,6 +82,15 @@ public class TestDataLoader implements CommandLineRunner {
         driver2.setLicenseNumber("DL-654321");
         driver2.setVehicleId("V-IND-01");
         individualDriverRepo.save(driver2);
+
+        IndividualDriver driver3 = new IndividualDriver();
+        driver3.setName("Honda Rachid");
+        driver3.setEmail("honda@example.com");
+        driver3.setPassword(encoder.encode("driver4567"));
+        driver3.setRole(Role.DRIVER_INDEPENDENT);
+        driver3.setLicenseNumber("DL-654351");
+        driver3.setVehicleId("V-IND-21");
+        individualDriverRepo.save(driver3);
 
         // Create Emergency Contacts
         EmergencyContact contact1 = new EmergencyContact();
@@ -127,15 +130,15 @@ public class TestDataLoader implements CommandLineRunner {
 
         EmotionRecord record1 = new EmotionRecord();
         record1.setSession(session);
-        record1.setEmotion("Fatigue");
-        record1.setConfidence(0.92);
+        record1.setEmotions(List.of("fatigue","sad","neutral"));
+        record1.setConfidences(List.of(0.8,0.1,0.1));
         record1.setDetectedAt(LocalDateTime.now().minusHours(1));
 
 
         EmotionRecord record2 = new EmotionRecord();
         record2.setSession(session);
-        record2.setEmotion("Neutral");
-        record2.setConfidence(0.85);
+        record2.setEmotions(List.of("fatigue","sad","neutral"));
+        record2.setConfidences(List.of(0.8,0.1,0.1));
         record2.setDetectedAt(LocalDateTime.now());
 
 
@@ -144,4 +147,4 @@ public class TestDataLoader implements CommandLineRunner {
 
         System.out.println("✅ Sample data inserted successfully!");
     }
-}
+}*/

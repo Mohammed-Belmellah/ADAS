@@ -1,5 +1,6 @@
 package com.example.ADAS_App.service;
 
+import com.example.ADAS_App.DTOs.EmotionRecordBatchDTO;
 import com.example.ADAS_App.DTOs.EmotionRecordDTO;
 
 import java.util.List;
@@ -11,4 +12,5 @@ public interface IEmotionRecordService {
     List<EmotionRecordDTO> getAllEmotionRecords();
 
     void deleteEmotionRecord(UUID id);
+    List<EmotionRecordDTO> saveBatch(EmotionRecordBatchDTO batchDTO);
 }

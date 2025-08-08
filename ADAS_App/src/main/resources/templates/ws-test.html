@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ADAS WebSocket Test</title>
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/stompjs@2.3.3/lib/stomp.min.js"></script>
+</head>
+<body>
+<h2>ADAS WebSocket Test</h2>
+<button id="connectBtn">Connect</button>
+<button id="sendBtn" disabled>Send Emotion Batch</button>
+<pre id="log"></pre>
+
+<script>
+    let stompClient = null;
+
+    function log(message) {
+        document.getElementById("log").textContent += message + "\n";
+    }
+
+    document.getElementById("connectBtn").onclick = function () {
+        const socket = new SockJS("http://localhost:8080/ws"); // match your @EnableWebSocketMessageBroker endpoint
+        stompClient = Stomp.over(socket);
+
+        stompClient.connect({}, function (frame) {
+            log("Connected: " + frame);
+
+            // Optional: subscribe to a topic for responses
+            stompClient.subscribe("/topic/emotions", function (response) {
+                log("Received: " + response.body);
+            });
+
+            document.getElementById("sendBtn").disabled = false;
+        });
+    };
+
+    document.getElementById("sendBtn").onclick = function () {
+        const payload = {
+            sessionId: "4a5f8caa-c533-4c88-bf16-3575a231d005",
+            records: [
+                {
+                    emotions: ["happy", "neutral", "angry"],
+                    confidences: [0.85, 0.10, 0.05],
+                    detectedAt: "2025-08-05T15:30:00"
+                },
+                {
+                    emotions: ["mad", "neutral", "happy"],
+                    confidences: [0.60, 0.25, 0.15],
+                    detectedAt: "2025-08-05T15:31:00"
+                }
+            ]
+        };
+
+        stompClient.send("/app/emotions/batch", {}, JSON.stringify(payload));
+        log("Sent: " + JSON.stringify(payload));
+    };
+</script>
+</body>
+</html>

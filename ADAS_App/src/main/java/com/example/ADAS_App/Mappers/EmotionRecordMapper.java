@@ -10,10 +10,9 @@ public class EmotionRecordMapper {
     public static EmotionRecordDTO toDTO(EmotionRecord record) {
         if (record == null) return null;
         EmotionRecordDTO dto = new EmotionRecordDTO();
-        dto.setId(record.getId());
         dto.setSessionId(record.getSession().getId());
-        dto.setEmotion(record.getEmotion());
-        dto.setConfidence(record.getConfidence());
+        dto.setEmotions(record.getEmotions());
+        dto.setConfidences(record.getConfidences());
         dto.setDetectedAt(record.getDetectedAt());
         return dto;
     }
@@ -21,9 +20,8 @@ public class EmotionRecordMapper {
         if (dto == null || session == null) return null;
 
         EmotionRecord entity = new EmotionRecord();
-        entity.setId(dto.getId());
-        entity.setEmotion(dto.getEmotion());
-        entity.setConfidence(dto.getConfidence());
+        entity.setEmotions(dto.getEmotions());
+        entity.setConfidences(dto.getConfidences());
         entity.setDetectedAt(dto.getDetectedAt());
         entity.setSession(session);
 

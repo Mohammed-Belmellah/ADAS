@@ -20,7 +20,7 @@ public class Session {
     private User driver;  // can be CompanyDriver or IndividualDriver
 
     @Column(nullable = false)
-    private LocalDateTime startTime;
+    private LocalDateTime startTime ;
 
     @Column
     private LocalDateTime endTime; // nullable if session is ongoing

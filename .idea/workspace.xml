@@ -4,7 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="550b2ccf-29b3-4bd0-8943-54cbe40c28be" name="Changes" comment="" />
+    <list default="true" id="550b2ccf-29b3-4bd0-8943-54cbe40c28be" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ADAS_App/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ADAS_App/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/AdasAppApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/AdasAppApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/DTOs/EmotionRecordDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/DTOs/EmotionRecordDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/Mappers/EmotionRecordMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/Mappers/EmotionRecordMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/TestDataLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/TestDataLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/controllers/SessionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/controllers/SessionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/entity/EmotionRecord.java" beforeDir="false" afterPath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/entity/EmotionRecord.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/entity/Session.java" beforeDir="false" afterPath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/entity/Session.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/repository/EmotionRecordRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/repository/EmotionRecordRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/service/EmotionRecordServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/service/EmotionRecordServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/service/IEmotionRecordService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/service/IEmotionRecordService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/service/ISessionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/service/ISessionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/service/SessionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/service/SessionServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ADAS_App/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ADAS_App/src/main/resources/application.properties" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,9 +31,16 @@
       <list>
         <option value="Enum" />
         <option value="Interface" />
+        <option value="HTML File" />
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
@@ -30,9 +53,12 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.AdasAppApplication.executor": "Debug",
+    "DefaultHtmlFileTemplate": "HTML File",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
     "last_opened_file_path": "C:/Users/mobelmel/Downloads/ADAS_App",
     "settings.editor.selected.configurable": "preferences.pluginManager"
   }
@@ -61,5 +87,16 @@
     <option featureType="dependencySupport" implementationName="java:org.springframework.boot:spring-boot" />
     <option featureType="dependencySupport" implementationName="java:org.springframework:spring-webmvc" />
     <option featureType="dependencySupport" implementationName="java:org.projectlombok:lombok" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
