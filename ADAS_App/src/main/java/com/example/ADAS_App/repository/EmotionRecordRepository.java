@@ -5,8 +5,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 public interface EmotionRecordRepository extends JpaRepository<EmotionRecord, UUID> {
@@ -23,4 +25,7 @@ public interface EmotionRecordRepository extends JpaRepository<EmotionRecord, UU
         LIMIT 1
         """, nativeQuery = true)
     String findDominantEmotionForSession(@Param("sessionId") UUID sessionId);
+    List<EmotionRecord> findBySession_IdOrderByDetectedAtAsc(UUID sessionId);
+    Optional<EmotionRecord> findTop1BySession_IdAndDetectedAtBeforeOrderByDetectedAtDesc(UUID sessionId, LocalDateTime t);
+    // ... your other methods ...
 }

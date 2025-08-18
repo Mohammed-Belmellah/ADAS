@@ -1,6 +1,8 @@
 package com.example.ADAS_App.service;
 
+import com.example.ADAS_App.DTOs.EndSessionResponse;
 import com.example.ADAS_App.DTOs.SessionDTO;
+import com.example.ADAS_App.DTOs.SessionReportDTO;
 import com.example.ADAS_App.Mappers.SessionMapper;
 import com.example.ADAS_App.entity.Session;
 import com.example.ADAS_App.entity.User;
@@ -21,12 +23,12 @@ public class SessionServiceImpl implements ISessionService {
 
     private final SessionRepository sessionRepo;
     private final UserRepository userRepo;
-    private final EmotionRecordRepository emotionRecordRepo;
+    private final SessionReportServiceImpl sessionReportService;
 
-    public SessionServiceImpl(SessionRepository sessionRepo, UserRepository userRepo, EmotionRecordRepository emotionRecordRepo) {
+    public SessionServiceImpl(SessionRepository sessionRepo, UserRepository userRepo, SessionReportServiceImpl sessionReportService ) {
         this.sessionRepo = sessionRepo;
         this.userRepo = userRepo;
-        this.emotionRecordRepo = emotionRecordRepo;
+        this.sessionReportService = sessionReportService;
     }
 
     public SessionDTO createSession(SessionDTO dto) {
@@ -49,19 +51,21 @@ public class SessionServiceImpl implements ISessionService {
                 .collect(Collectors.toList());
     }
     @Override
-    public SessionDTO endSession(UUID id, LocalDateTime endTime) {
+    public EndSessionResponse endSessionWithReport(UUID id, LocalDateTime endTime) {
         Session session = sessionRepo.findById(id)
                 .orElseThrow(() -> new RuntimeException("Session not found"));
+
         if (endTime == null) endTime = LocalDateTime.now();
-
         session.setEndTime(endTime);
-
-        // Calcul automatique de averageEmotion si tu veux
-        String average = emotionRecordRepo.findDominantEmotionForSession(session.getId()); // à définir
-        session.setAverageEmotion(average);
-
         sessionRepo.save(session);
 
-        return SessionMapper.toDTO(session);
+        // Compute report
+        SessionReportDTO report = sessionReportService.generate(id);
+
+        // Update averageEmotion from the report
+        session.setAverageEmotion(report.getDominantEmotion());
+        sessionRepo.save(session);
+
+        return new EndSessionResponse(SessionMapper.toDTO(session), report);
     }
 }

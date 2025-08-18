@@ -1,6 +1,7 @@
 package com.example.ADAS_App.service;
 
 import com.example.ADAS_App.DTOs.EmotionRecordBatchDTO;
+import com.example.ADAS_App.util.EmotionUtils;
 import com.example.ADAS_App.DTOs.EmotionRecordDTO;
 import com.example.ADAS_App.Mappers.EmotionRecordMapper;
 import com.example.ADAS_App.entity.EmotionRecord;
@@ -11,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -22,15 +24,18 @@ public class EmotionRecordServiceImpl implements IEmotionRecordService {
 
     private final EmotionRecordRepository emotionRecordRepo;
     private final SessionRepository sessionRepo;
+    private final AlertEngine alertEngine;
+
 
     @Override
     public EmotionRecordDTO createEmotionRecord(EmotionRecordDTO dto) {
         Session session = sessionRepo.findById(dto.getSessionId())
                 .orElseThrow(() -> new RuntimeException("Session not found with id: " + dto.getSessionId()));
 
+        dto.setEmotions(EmotionUtils.normalizeLabels(dto.getEmotions()));
+
         EmotionRecord emotionRecord = EmotionRecordMapper.toEntity(dto, session);
         EmotionRecord saved = emotionRecordRepo.save(emotionRecord);
-
         return EmotionRecordMapper.toDTO(saved);
     }
 
@@ -64,13 +69,23 @@ public class EmotionRecordServiceImpl implements IEmotionRecordService {
                 .orElseThrow(() -> new RuntimeException("Session not found"));
 
         List<EmotionRecord> records = batchDTO.getRecords().stream()
-                .map(dto -> EmotionRecordMapper.toEntity(dto, session))
+                .map(dto -> {
+                    // normaliser les labels AVANT le mapping
+                    dto.setEmotions(EmotionUtils.normalizeLabels(dto.getEmotions()));
+                    return EmotionRecordMapper.toEntity(dto, session);
+                })
                 .toList();
 
-        emotionRecordRepo.saveAll(records);
+        List<EmotionRecord> saved  = emotionRecordRepo.saveAllAndFlush(records);
+
+        saved.sort(Comparator.comparing(EmotionRecord::getDetectedAt));
+
+
+        alertEngine.evaluateAndBroadcast(session, saved);
 
         return records.stream()
                 .map(EmotionRecordMapper::toDTO)
                 .toList();
     }
+
 }

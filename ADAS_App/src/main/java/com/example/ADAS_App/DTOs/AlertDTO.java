@@ -9,6 +9,7 @@ import java.util.UUID;
 public class AlertDTO {
     private UUID id;
     private UUID driverId;
+    private UUID sessionId;
     private String type;
     private String message;
     private boolean resolved;

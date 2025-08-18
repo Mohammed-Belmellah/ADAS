@@ -17,6 +17,8 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
                 .setRelayPort(61613)
                 .setClientLogin("guest")
                 .setClientPasscode("guest")
+                .setSystemLogin("guest")
+                .setSystemPasscode("guest")
                 .setVirtualHost("/");
         config.setApplicationDestinationPrefixes("/app");
     }

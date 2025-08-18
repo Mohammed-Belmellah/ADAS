@@ -1,5 +1,6 @@
 package com.example.ADAS_App.controllers;
 
+import com.example.ADAS_App.DTOs.EndSessionResponse;
 import com.example.ADAS_App.DTOs.SessionDTO;
 import com.example.ADAS_App.service.ISessionService;
 import org.springframework.http.ResponseEntity;
@@ -29,15 +30,14 @@ public class SessionController {
     public ResponseEntity<List<SessionDTO>> getSessionsByDriver(@PathVariable UUID driverId) {
         return ResponseEntity.ok(sessionService.getSessionsByDriver(driverId));
     }
-    @PutMapping("/{id}/end")
-    public SessionDTO endSession(
-            @PathVariable UUID id,
-            @RequestBody(required = false) Map<String, Object> body // optionnel si tu veux customiser le endTime
-    ) {
+    @PutMapping("/{id}/end-with-report")
+    public EndSessionResponse endSessionWithReport(@PathVariable UUID id,
+                                                   @RequestBody(required = false) Map<String, Object> body) {
         LocalDateTime endTime = null;
         if (body != null && body.containsKey("endTime")) {
             endTime = LocalDateTime.parse(body.get("endTime").toString());
         }
-        return sessionService.endSession(id, endTime);
+        return sessionService.endSessionWithReport(id, endTime);
     }
+
 }

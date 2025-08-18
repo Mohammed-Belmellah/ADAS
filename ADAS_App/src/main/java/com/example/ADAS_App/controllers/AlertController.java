@@ -27,4 +27,13 @@ public class AlertController {
     public ResponseEntity<List<AlertDTO>> getAlertsByDriver(@PathVariable UUID driverId) {
         return ResponseEntity.ok(alertService.getAlertsByDriver(driverId));
     }
+
+    @GetMapping("/session/{sessionId}")
+    public List<AlertDTO> listBySession(@PathVariable UUID sessionId) {
+        return alertService.listBySession(sessionId);
+    }
+    @PatchMapping("/{id}/resolve")
+    public ResponseEntity<AlertDTO> resolve(@PathVariable UUID id) {
+        return ResponseEntity.ok(alertService.markResolved(id));
+    }
 }

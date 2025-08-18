@@ -10,10 +10,12 @@ public class AlertMapper {
         AlertDTO dto = new AlertDTO();
         dto.setId(alert.getId());
         dto.setDriverId(alert.getDriver().getId());
+        dto.setSessionId(alert.getSession().getId());
         dto.setType(alert.getType());
         dto.setMessage(alert.getMessage());
         dto.setResolved(alert.isResolved());
         dto.setCreatedAt(alert.getCreatedAt());
         return dto;
     }
+
 }

@@ -14,7 +14,7 @@ import java.util.UUID;
 @RequestMapping("/api/emotions")
 @RequiredArgsConstructor
 public class EmotionRecordController {
-@Autowired
+
     private final IEmotionRecordService emotionRecordService;
 
     // === Create a new emotion record ===
