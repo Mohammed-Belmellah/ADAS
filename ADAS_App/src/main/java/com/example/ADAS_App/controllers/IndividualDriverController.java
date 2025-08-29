@@ -5,6 +5,9 @@ import com.example.ADAS_App.DTOs.IndividualDriverResponseDTO;
 import com.example.ADAS_App.service.IIndividualDriverService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,26 +20,29 @@ public class IndividualDriverController {
 
     private final IIndividualDriverService individualDriverService;
 
-    // ✅ Create a new individual driver
+
     @PostMapping
     public ResponseEntity<IndividualDriverResponseDTO> createIndividualDriver(
             @RequestBody CreateIndividualDriverDTO dto) {
-        return ResponseEntity.ok(individualDriverService.createIndividualDriver(dto));
+        // Keep disabled or move to /public (see variant below)
+        return ResponseEntity.status(405).build();
     }
 
-    // ✅ Get all individual drivers
+
     @GetMapping
     public ResponseEntity<List<IndividualDriverResponseDTO>> getAllIndividualDrivers() {
-        return ResponseEntity.ok(individualDriverService.getAllIndividualDrivers());
+        return ResponseEntity.status(405).build();
     }
 
-    // ✅ Get a specific driver by ID
+
     @GetMapping("/{id}")
-    public ResponseEntity<IndividualDriverResponseDTO> getIndividualDriverById(@PathVariable UUID id) {
+    public ResponseEntity<IndividualDriverResponseDTO> getIndividualDriverById(
+            @PathVariable UUID id) {
         return ResponseEntity.ok(individualDriverService.getIndividualDriverById(id));
     }
 
-    // ✅ Update a driver
+    /** ✅ Driver can update only their own record. Admin is NOT allowed. */
+
     @PutMapping("/{id}")
     public ResponseEntity<IndividualDriverResponseDTO> updateIndividualDriver(
             @PathVariable UUID id,
@@ -44,9 +50,11 @@ public class IndividualDriverController {
         return ResponseEntity.ok(individualDriverService.updateIndividualDriver(id, dto));
     }
 
-    // ✅ Delete a driver
+    /** ✅ Driver can delete only their own record. Admin is NOT allowed. */
+
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteIndividualDriver(@PathVariable UUID id) {
+    public ResponseEntity<Void> deleteIndividualDriver(
+            @PathVariable UUID id) {
         individualDriverService.deleteIndividualDriver(id);
         return ResponseEntity.noContent().build();
     }

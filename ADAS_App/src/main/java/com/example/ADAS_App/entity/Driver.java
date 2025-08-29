@@ -3,7 +3,9 @@ package com.example.ADAS_App.entity;
 import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 @MappedSuperclass
 public abstract class Driver extends User {

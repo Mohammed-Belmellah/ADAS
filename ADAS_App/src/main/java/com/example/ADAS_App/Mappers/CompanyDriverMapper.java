@@ -2,8 +2,10 @@ package com.example.ADAS_App.Mappers;
 
 import com.example.ADAS_App.DTOs.CompanyDriverResponseDTO;
 import com.example.ADAS_App.DTOs.CreateCompanyDriverDTO;
+import com.example.ADAS_App.DTOs.DriverBriefDTO;
 import com.example.ADAS_App.entity.Company;
 import com.example.ADAS_App.entity.CompanyDriver;
+import com.example.ADAS_App.entity.User;
 
 public class CompanyDriverMapper {
     public static CompanyDriverResponseDTO toDto(CompanyDriver driver) {
@@ -39,5 +41,12 @@ public class CompanyDriverMapper {
         driver.setCompany(company);
 
         return driver;
+    }
+    public static DriverBriefDTO toBrief(User driver) { // or CompanyDriver
+        return DriverBriefDTO.builder()
+                .id(driver.getId())
+                .fullName(driver.getName())   // adapt
+                .phone(driver.getPhone())
+                .build();
     }
 }

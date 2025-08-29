@@ -5,24 +5,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="550b2ccf-29b3-4bd0-8943-54cbe40c28be" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ADAS_App/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ADAS_App/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/DTOs/AlertDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/DTOs/AlertDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/Mappers/AlertMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/Mappers/AlertMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/Mappers/CompanyDriverMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/Mappers/CompanyDriverMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/controllers/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/controllers/AdminController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/controllers/AlertController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/controllers/AlertController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/controllers/CompanyDriverController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/controllers/CompanyDriverController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/controllers/EmotionRecordController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/controllers/EmotionRecordController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/controllers/IndividualDriverController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/controllers/IndividualDriverController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/controllers/SessionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/controllers/SessionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/entity/Alert.java" beforeDir="false" afterPath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/entity/Alert.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/repository/AdminRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/repository/AdminRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/controllers/SessionReportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/controllers/SessionReportController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/controllers/SessionSummaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/controllers/SessionSummaryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/controllers/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/entity/Driver.java" beforeDir="false" afterPath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/entity/Driver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/entity/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/repository/AlertRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/repository/AlertRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/repository/EmotionRecordRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/repository/EmotionRecordRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/repository/SessionReportRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/repository/SessionReportRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/repository/SessionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/repository/SessionRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/service/AdminServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/service/AdminServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/service/AlertServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/service/AlertServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/service/EmotionRecordServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/service/EmotionRecordServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/service/IAlertService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/service/IAlertService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/service/AlertEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/service/AlertEngine.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/service/ISessionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/service/ISessionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/service/SessionReportServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/service/SessionReportServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/service/SessionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/service/SessionServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/webSocketConf/EmotionRecordWebSocketController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/webSocketConf/EmotionRecordWebSocketController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/webSocketConf/WebSocketConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/ADAS_App/src/main/java/com/example/ADAS_App/webSocketConf/WebSocketConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ADAS_App/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ADAS_App/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ADAS_App/src/main/resources/templates/adas-ws.html" beforeDir="false" afterPath="$PROJECT_DIR$/ADAS_App/src/main/resources/templates/adas-ws.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,9 +43,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
+        <option value="HTML File" />
         <option value="Interface" />
         <option value="Class" />
-        <option value="HTML File" />
       </list>
     </option>
   </component>

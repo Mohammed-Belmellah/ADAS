@@ -5,6 +5,9 @@ import com.example.ADAS_App.DTOs.CreateCompanyDriverDTO;
 import com.example.ADAS_App.service.ICompanyDriverService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,26 +20,33 @@ public class CompanyDriverController {
 
     private final ICompanyDriverService companyDriverService;
 
-    // ✅ Create a new company driver
+
     @PostMapping
     public ResponseEntity<CompanyDriverResponseDTO> createCompanyDriver(
             @RequestBody CreateCompanyDriverDTO dto) {
         return ResponseEntity.ok(companyDriverService.createCompanyDriver(dto));
     }
 
-    // ✅ Get all company drivers
+    /** List all company drivers — ADMIN only */
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping
     public ResponseEntity<List<CompanyDriverResponseDTO>> getAllCompanyDrivers() {
         return ResponseEntity.ok(companyDriverService.getAllCompanyDrivers());
     }
 
-    // ✅ Get a specific company driver by ID
+    /** Get a specific company driver:
+     *  - ADMIN → allowed
+     *  - DRIVER → only self
+     */
+    @PreAuthorize("hasRole('ADMIN') or (hasRole('DRIVER') and @accessGuard.isSelf(#id, #jwt))")
     @GetMapping("/{id}")
-    public ResponseEntity<CompanyDriverResponseDTO> getCompanyDriverById(@PathVariable UUID id) {
+    public ResponseEntity<CompanyDriverResponseDTO> getCompanyDriverById(@PathVariable UUID id,
+                                                                         @AuthenticationPrincipal Jwt jwt) {
         return ResponseEntity.ok(companyDriverService.getCompanyDriverById(id));
     }
 
-    // ✅ Update a company driver
+
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/{id}")
     public ResponseEntity<CompanyDriverResponseDTO> updateCompanyDriver(
             @PathVariable UUID id,
@@ -44,7 +54,7 @@ public class CompanyDriverController {
         return ResponseEntity.ok(companyDriverService.updateCompanyDriver(id, dto));
     }
 
-    // ✅ Delete a company driver
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteCompanyDriver(@PathVariable UUID id) {
         companyDriverService.deleteCompanyDriver(id);

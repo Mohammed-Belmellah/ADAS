@@ -5,19 +5,14 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class AlertDTO {
+public class DriverBriefDTO {
     private UUID id;
-    private UUID driverId;
-    private UUID sessionId;
-    private String type;
-    private String message;
-    private boolean resolved;
-    private LocalDateTime createdAt;
+    private String fullName;   // adapt to your fields
+    private String phone;
 }

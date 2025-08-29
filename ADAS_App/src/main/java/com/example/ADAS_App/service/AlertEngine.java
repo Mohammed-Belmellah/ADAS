@@ -36,7 +36,7 @@ public class AlertEngine {
         if (newRecords == null || newRecords.isEmpty()) return;
 
         // Pull one record before the batch to stitch streaks correctly
-        var first = newRecords.get(0);
+        var first = newRecords.getFirst();
         EmotionRecord prev = recordRepo
                 .findTop1BySession_IdAndDetectedAtBeforeOrderByDetectedAtDesc(
                         session.getId(), first.getDetectedAt())

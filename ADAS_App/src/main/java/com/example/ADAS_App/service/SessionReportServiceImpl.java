@@ -115,7 +115,7 @@ public class SessionReportServiceImpl implements ISessionReportService  {
             // Peaks
             if (conf >= 0.8 &&
                     (emo == EmotionType.ANGRY || emo == EmotionType.TIRED || emo == EmotionType.SURPRISED) &&
-                    dt >= 5) {
+                    dt >= 1) {
                 peaks++;
             }
         }

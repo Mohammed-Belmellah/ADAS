@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 
@@ -16,4 +17,7 @@ public interface AlertRepository extends JpaRepository<Alert, UUID> {
     List<Alert> findBySession_IdOrderByCreatedAtDesc(UUID sessionId);
 
     List<Alert> findBySession_Id(UUID sessionId);
+
+    List<Alert> findBySession_IdIn(Collection<UUID> sessionIds);
+    List<Alert> findBySession_IdInAndResolvedFalse(Collection<UUID> sessionIds);
 }

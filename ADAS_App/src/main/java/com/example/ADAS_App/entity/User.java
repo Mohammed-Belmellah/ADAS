@@ -20,6 +20,9 @@ public abstract class User {
     @Column(updatable = false, nullable = false)
     private UUID id;
 
+    @Column(name = "kc_user_id", length = 64, unique = true)
+    private String keycloakUserId;
+
     @Column(nullable = false, length = 100)
     private String name;
 
