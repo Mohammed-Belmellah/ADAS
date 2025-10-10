@@ -1,0 +1,4 @@
+[submodule "ai/adas-ai"]
+	path = ai/adas-ai
+	url = https://github.com/Mohammed-Belmellah/adas-ai
+	branch = main
