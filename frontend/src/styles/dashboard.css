@@ -1,0 +1,51 @@
+/* Generic page layout helpers */
+.page-section {
+  margin-bottom: 1rem;
+}
+
+/* Make the left column (video) feel compact but prominent */
+.video-shell {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  background: #000;
+}
+
+/* A tighter card wrapper for items you want to shrink (alerts under video) */
+.compact-card .card {
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+}
+
+.compact-card .card-header,
+.compact-card .card-footer {
+  padding: 0.5rem 0.75rem;
+}
+
+.compact-card .card-body {
+  padding: 0.5rem 0.75rem;
+}
+
+.compact-card .list-group-item {
+  padding: 0.35rem 0.75rem;
+  font-size: 0.9rem;
+}
+
+/* Reduce spacing inside recharts container a bit */
+.card .recharts-wrapper {
+  margin-top: -6px;
+}
+
+/* Utility: slightly smaller header badges */
+.badge[data-small] {
+  font-size: 0.72rem;
+  padding: 0.25rem 0.5rem;
+}
+
+/* On very wide screens, prevent the video from stretching too much visually */
+@media (min-width: 1600px) {
+  .video-shell .ratio {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}

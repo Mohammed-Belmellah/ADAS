@@ -7,6 +7,7 @@ import App from "./App";
 import { initAuth } from "./auth/keycloak";   // <-- your bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import "./styles/dashboard.css"
 
 (async () => {
   await initAuth(); // redirects to Keycloak if not logged in; loads token

@@ -1,4 +1,3 @@
-// src/pages/admin/LiveSessionPage.tsx
 import { useMemo, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useStompTopics } from "../../hooks/useStompTopics";
@@ -6,8 +5,13 @@ import EmotionsLivePanel from "../../components/live/EmotionsLivePanel";
 import AlertsLivePanel from "../../components/live/AlertsLivePanel";
 import type { LiveAlert } from "../../components/live/AlertsLivePanel";
 import AlertsHistoryPanel from "../../components/live/AlertsHistoryPanel";
+import WebRTCViewer from "../../components/live/WebRTCViewer";
+
+// styles (import once; or move to App root if you prefer global)
+import "../../styles/dashboard.css";
 
 const WS_HTTP = import.meta.env.VITE_WS_HTTP_URL as string | undefined;
+const OFFER_URL = import.meta.env.VITE_WEBRTC_OFFER_URL ?? "http://localhost:8090/offer";
 
 type EmotionsPayload =
   | { emotions: Record<string, number>; confidences?: number[]; sessionId?: string; ts?: string }
@@ -31,15 +35,10 @@ export default function LiveSessionPage() {
   const { connected } = useStompTopics(WS_HTTP, topics, {
     debug: true, // turn off once verified
     onMessage: (topic, rawBody) => {
-      // Parse if broker delivers a string
       const body =
         typeof rawBody === "string"
           ? (() => {
-              try {
-                return JSON.parse(rawBody);
-              } catch {
-                return rawBody;
-              }
+              try { return JSON.parse(rawBody); } catch { return rawBody; }
             })()
           : rawBody;
 
@@ -108,7 +107,7 @@ export default function LiveSessionPage() {
       <div className="d-flex align-items-center justify-content-between mb-3">
         <h3 className="mb-0">Live Surveillance</h3>
         <div className="d-flex align-items-center gap-3">
-          <span className={`badge ${connected ? "text-bg-success" : "text-bg-secondary"}`}>
+          <span className={`badge ${connected ? "text-bg-success" : "text-bg-secondary"}`} data-small>
             {connected ? "Connected" : "Disconnected"}
           </span>
           <span className="text-muted small">Session: {sessionId?.slice(0, 8)}…</span>
@@ -119,12 +118,30 @@ export default function LiveSessionPage() {
       </div>
 
       <div className="row g-3">
-        <div className="col-lg-6">
-          <EmotionsLivePanel emotions={emotions} />
+        {/* LEFT: stream + (compact) alerts under it */}
+        <div className="col-lg-8 col-xxl-8">
+          <WebRTCViewer
+            offerUrl={OFFER_URL}
+            codec="vp8"
+            autoStart
+            showControls
+            className="page-section"
+          />
+          <div className="compact-card page-section">
+            <AlertsLivePanel counts={alertCounts} recent={recentAlerts} />
+          </div>
         </div>
-        <div className="col-lg-6">
-          <AlertsLivePanel counts={alertCounts} recent={recentAlerts} />
-          {sessionId && <AlertsHistoryPanel sessionId={sessionId} />}
+
+        {/* RIGHT: emotions chart + alert history */}
+        <div className="col-lg-5 col-xxl-4">
+          <div className="page-section">
+            <EmotionsLivePanel emotions={emotions} />
+          </div>
+          {sessionId && (
+            <div className="page-section">
+              <AlertsHistoryPanel sessionId={sessionId} />
+            </div>
+          )}
         </div>
       </div>
     </div>

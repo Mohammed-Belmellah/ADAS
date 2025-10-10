@@ -26,7 +26,7 @@ const nice = (s: string) =>
 
 export default function ActiveSessionsPage() {
   // server params
-  const [companyId, setCompanyId] = useState<string>("55b0edbc-f2ac-4efd-8add-067d9317096f");
+  const [companyId, setCompanyId] = useState<string>("b92785ff-7eae-4f47-aa16-1cda87771b0d");
 
   // paging
   const [page, setPage] = useState(0);
